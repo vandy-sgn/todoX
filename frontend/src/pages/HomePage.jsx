@@ -19,15 +19,14 @@ const HomePage = () => {
   const [filter, setFilter] = useState("all");
   const [dateQuery, setDateQuery] = useState("all");
   const [page, setPage] = useState(1);
-  
+
   useEffect(() => {
     fetchTasks();
   }, [dateQuery]);
-  
+
   useEffect(() => {
     setPage(1);
   }, [filter, dateQuery]);
-
 
   //============Call API================
   const fetchTasks = async () => {
@@ -91,8 +90,6 @@ const HomePage = () => {
   const handlePageChange = (newPage) => {
     setPage(newPage);
   };
-
-
 
   return (
     <div className="min-h-screen w-full bg-[#fefcff] relative">

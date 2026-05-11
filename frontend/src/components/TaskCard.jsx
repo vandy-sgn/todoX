@@ -16,6 +16,7 @@ import { toast } from "sonner";
 const TaskCard = ({ task, index, handleTaskChanged }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [updateTaskTitle, setUpdateTaskTitle] = useState(task.title || "");
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const updateTask = async () => {
     try {
@@ -34,6 +35,7 @@ const TaskCard = ({ task, index, handleTaskChanged }) => {
 
   const deleteTask = async (taskID) => {
     try {
+      setIsDeleting(true);
       await api.delete(`/tasks/${taskID}`);
       toast.success("Xóa thành công");
       handleTaskChanged();
@@ -41,6 +43,8 @@ const TaskCard = ({ task, index, handleTaskChanged }) => {
       console.error("Gặp lỗi khi xóa task", error);
       toast.error("Lỗi xóa task");
     }
+
+    setIsDeleting(false);
   };
 
   const toggleTaskCompleteButton = async () => {
@@ -73,6 +77,7 @@ const TaskCard = ({ task, index, handleTaskChanged }) => {
       updateTask();
     }
   };
+
   return (
     <Card
       className={cn(
@@ -170,7 +175,11 @@ const TaskCard = ({ task, index, handleTaskChanged }) => {
           <Button
             variant="ghost"
             size="icon"
-            className="flex-shrink-0 transition-color size-8 text-muted-foreground hover:text-destructive"
+            className={cn(
+              "flex-shrink-0 transition-color size-8 text-muted-foreground hover:text-destructive",
+              isDeleting ? "opacity-50 cursor-not-allowed" : {},
+            )}
+            disabled={isDeleting}
             onClick={() => {
               deleteTask(task._id);
             }}

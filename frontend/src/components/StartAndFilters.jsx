@@ -9,7 +9,7 @@ const StartAndFilters = ({
   completedTasksCount,
   activeTasksCount,
   filter,
-  handlePageChange,
+  handlePageChange
 }) => {
   return (
     <div className="flex flex-col items-start justify- gap-4 sm:flex-row sm:items-center ">
