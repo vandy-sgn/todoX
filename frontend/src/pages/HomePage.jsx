@@ -92,14 +92,12 @@ const HomePage = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#fefcff] relative">
-      {/* Dreamy Sky Pink Glow */}
+    <div className="min-h-screen w-full relative">
+      {/* Soft Pastel Dream Gradient */}
       <div
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: `
-        radial-gradient(circle at 30% 70%, rgba(173, 216, 230, 0.35), transparent 60%),
-        radial-gradient(circle at 70% 30%, rgba(255, 182, 193, 0.4), transparent 60%)`,
+          background: `linear-gradient(135deg, #F8BBD9 0%, #FDD5B4 25%, #FFF2CC 50%, #E1F5FE 75%, #BBDEFB 100%)`,
         }}
       />
       {/* Your content goes here */}
