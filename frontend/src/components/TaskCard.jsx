@@ -42,9 +42,8 @@ const TaskCard = ({ task, index, handleTaskChanged }) => {
     } catch (error) {
       console.error("Gặp lỗi khi xóa task", error);
       toast.error("Lỗi xóa task");
+      setIsDeleting(false);
     }
-
-    setIsDeleting(false);
   };
 
   const toggleTaskCompleteButton = async () => {
